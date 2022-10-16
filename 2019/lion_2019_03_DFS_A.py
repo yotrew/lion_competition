@@ -4,32 +4,34 @@ Author:Yotrew Wing
 2022/10/16
 https://github.com/yotrew/lion_competition
 #N-puzzle game
-
+解法:
+把2維拉直成一維
 012
 345
 678
-
+-->0,1,2,3,4,5,6,7,8
+所以(pos(4)代表位置4)
 pos(4)+1=5 right
 pos(4)-1=3 left
 pos(4)+3=5 down
 pos(4)-3=1 up
-
 #A*快很多
 
 '''
-import copy
 import time
 found_cnt=32
 table=[]
 found=False
-fscore=40
+fscore=31
 def DFS(t,pos,cnt,prev):
     global found,found_cnt,fscore
+    #if found:
+    #    return
     
     if cnt>=found_cnt: #加速,找到至少某一步數之後,不可能比這個步數還要多
         return
-    
     f=True
+    #print(t,pos,cnt,prev)
     hscore=0 #統計至目標值還有多少步
     for i in range(len(t)):
         if t[i]!=i:
@@ -40,26 +42,27 @@ def DFS(t,pos,cnt,prev):
     if f:
         found=True
         if found_cnt>cnt:
-            found_cnt=cnt
+            found_cnt=cnt            
+        #print("found2:",found,cnt)
 
-    if (cnt+hscore)>31: #已走步數+距離目標值不能超過限制步數(>31)
+    if (cnt+hscore)>fscore: #已走步數+距離目標值不能超過限制步數(>31)
         return
         
     if (pos+1)%3!=0 and prev!=(pos+1): #right
-        t1=copy.deepcopy(t)
-        t1[pos],t1[pos+1]=t1[pos+1],t1[pos]
+        t1=t.copy()
+        t1[pos],t1[pos+1]=t1[pos+1],t1[pos] #swap(t1[pos],t1[pos+1])
         DFS(t1,pos+1,cnt+1,pos)
     if (pos-1)%3!=2 and prev!=(pos-1): #left
-        t1=copy.deepcopy(t)
-        t1[pos],t1[pos-1]=t1[pos-1],t1[pos]
+        t1=t.copy()
+        t1[pos],t1[pos-1]=t1[pos-1],t1[pos] #swap(t1[pos],t1[pos-1])
         DFS(t1,pos-1,cnt+1,pos)
     if not (pos+3)>=9 and prev!=(pos+3): #down
-        t1=copy.deepcopy(t)
-        t1[pos],t1[pos+3]=t1[pos+3],t1[pos]
+        t1=t.copy()
+        t1[pos],t1[pos+3]=t1[pos+3],t1[pos] #swap(t1[pos],t1[pos+3])
         DFS(t1,pos+3,cnt+1,pos)
     if not (pos-3)<=-1 and prev!=(pos-3): #up
-        t1=copy.deepcopy(t)
-        t1[pos],t1[pos-3]=t1[pos-3],t1[pos]
+        t1=t.copy()
+        t1[pos],t1[pos-3]=t1[pos-3],t1[pos] #swap(t1[pos],t1[pos-3])
         DFS(t1,pos-3,cnt+1,pos)
     #print("-"*20)
         

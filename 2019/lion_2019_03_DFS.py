@@ -4,16 +4,17 @@ Author:Yotrew Wing
 2022/10/16
 https://github.com/yotrew/lion_competition
 #N-puzzle game
-
+解法:
+把2維拉直成一維
 012
 345
 678
-
+-->0,1,2,3,4,5,6,7,8
+所以(pos(4)代表位置4)
 pos(4)+1=5 right
 pos(4)-1=3 left
 pos(4)+3=5 down
 pos(4)-3=1 up
-
 #DFS的問題是不知道誰是最短,要走過所有才知道,BFS就第一個找到就會是最短
 #但DFS/BFS找不到時都會很慢
 '''
@@ -49,19 +50,19 @@ def DFS(t,pos,cnt,prev):
     
     if (pos+1)%3!=0 and prev!=(pos+1): #right
         t1=copy.deepcopy(t)
-        t1[pos],t1[pos+1]=t1[pos+1],t1[pos]
+        t1[pos],t1[pos+1]=t1[pos+1],t1[pos] #swap(t1[pos],t1[pos+1])
         DFS(t1,pos+1,cnt+1,pos)
     if (pos-1)%3!=2 and prev!=(pos-1): #left
         t1=copy.deepcopy(t)
-        t1[pos],t1[pos-1]=t1[pos-1],t1[pos]
+        t1[pos],t1[pos-1]=t1[pos-1],t1[pos] #swap(t1[pos],t1[pos-1])
         DFS(t1,pos-1,cnt+1,pos)
     if not (pos+3)>=9 and prev!=(pos+3): #down
         t1=copy.deepcopy(t)
-        t1[pos],t1[pos+3]=t1[pos+3],t1[pos]
+        t1[pos],t1[pos+3]=t1[pos+3],t1[pos] #swap(t1[pos],t1[pos+3])
         DFS(t1,pos+3,cnt+1,pos)
     if not (pos-3)<=-1 and prev!=(pos-3): #up
         t1=copy.deepcopy(t)
-        t1[pos],t1[pos-3]=t1[pos-3],t1[pos]
+        t1[pos],t1[pos-3]=t1[pos-3],t1[pos] #swap(t1[pos],t1[pos-3])
         DFS(t1,pos-3,cnt+1,pos)
     #print("-"*20)
         
