@@ -2,7 +2,7 @@
 2018來恩盃:第 6 題 – 親和數
 Author:Yotrew Wing
 2022/10/10
-https://github.com/yotrew
+https://github.com/yotrew/lion_competition
 
 解法:
 

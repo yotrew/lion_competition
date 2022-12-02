@@ -5,7 +5,7 @@ Author:Yotrew Wing
 解法:
 Karatsuba演算法
 
-https://github.com/yotrew
+https://github.com/yotrew/lion_competition
 '''
 import math
 def Karatsuba(x,y):

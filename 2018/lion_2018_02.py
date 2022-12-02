@@ -1,8 +1,9 @@
 '''
-2018來恩盃:N 進位系統之乘法直式運算
+2018來恩盃:第 2 題 – N 進位系統之乘法直式運算
+
 Author:Yotrew Wing
 2022/10/10
-https://github.com/yotrew
+https://github.com/yotrew/lion_competition
 解法:
 就計概(or數概)進制轉
 '''
@@ -13,7 +14,7 @@ base=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
 nums=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
 #合成符號-數值表及反查表
-base_dict=dict(zip(base,nums)) 
+base_dict=dict(zip(base,nums)) #ref:https://www.adamsmith.haus/python/answers/how-to-create-a-dictionary-from-two-lists-in-python
 rev_base_dict=dict(zip(nums,base))
 
 #print(base_dict)

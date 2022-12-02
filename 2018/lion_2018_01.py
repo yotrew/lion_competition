@@ -2,7 +2,7 @@
 2018來恩盃:第 1 題 – 密文排列
 同2020來恩盃:第 6 題 解密運算
 Author:Yotrew Wing
-https://github.com/yotrew
+https://github.com/yotrew/lion_competition
 
 2022/10/10
 解法:

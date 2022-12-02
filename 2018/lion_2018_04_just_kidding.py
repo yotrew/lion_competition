@@ -1,8 +1,8 @@
 '''
-2019來恩盃:第 2 題 – 字串解碼
+2018來恩盃:第 4 題 – 計算機程式
 Author:Yotrew Wing
 2022/10/09
-https://github.com/yotrew
+https://github.com/yotrew/lion_competition
 
 解法:
 直接用eval

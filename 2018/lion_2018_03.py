@@ -2,7 +2,7 @@
 2018來恩盃:第 3 題 – 資料傳輸編碼
 Author:Yotrew Wing
 2022/10/10
-https://github.com/yotrew
+https://github.com/yotrew/lion_competition
 解法:
 
 '''

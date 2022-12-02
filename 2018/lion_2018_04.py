@@ -1,8 +1,8 @@
 '''
-2019來恩盃:第 2 題 – 字串解碼
+2018來恩盃:第 4 題 – 計算機程式
 Author:Yotrew Wing
 2022/10/09
-https://github.com/yotrew
+https://github.com/yotrew/lion_competition
 
 用stack:2個stack,一個存op,一個存數值
 解法:
