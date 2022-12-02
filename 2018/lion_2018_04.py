@@ -11,7 +11,7 @@ https://github.com/yotrew
 in_s=input()
 stack=[]
 op_stack=[]
-priority_dict={")":9,"^":2,"*":2,"/":2,"+":1,"-":1,"(":0} #運算子優先權
+priority_dict={")":9,"^":3,"*":2,"/":2,"+":1,"-":1,"(":0} #運算子優先權
 op="+-*/^()"
 tmp_str=""
 def opf(o,x,y):
@@ -26,7 +26,7 @@ def opf(o,x,y):
     if o=="^":
         return (x**y)
     
-for i in in_s:
+for i in in_s.strip():
     if i not in op: #不是運算子時,要串成數值
         tmp_str=tmp_str+i
     else:
@@ -47,11 +47,12 @@ for i in in_s:
                     x=stack.pop()                    
                     stack.append(opf(o,x,y))
                     #stack.append(x)
-            elif i!="(" and priority_dict[i]<priority_dict[op_stack[-1]]:
-                y=stack.pop()
-                x=stack.pop()
-                stack.append(opf(op_stack[-1],x,y))
-                op_stack.pop()
+            elif i!="(" and priority_dict[i]<=priority_dict[op_stack[-1]]:
+                while len(op_stack)>0 and op_stack[-1]!=")" and priority_dict[i]<=priority_dict[op_stack[-1]]:
+                    y=stack.pop()
+                    x=stack.pop()
+                    stack.append(opf(op_stack[-1],x,y))
+                    op_stack.pop()
             if i!=")":
                 op_stack.append(i)
 
